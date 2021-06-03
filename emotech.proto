@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package emotech;
+
+service EmotechService{
+	
+	rpc exchangeNumber(IntRequest) returns (IntResponse){}
+
+	rpc exchangeString(StringRequest) returns (StringResponse){}
+
+  rpc exchangeFile(stream ChunkRequest) returns (ChunkResponse) {}
+
+}
+
+message IntRequest {
+	
+	int32 number = 1;
+
+}
+
+
+message IntResponse {
+
+	int32 number = 1;
+
+}
+
+message StringRequest {
+
+	string requestText = 1;
+
+}
+
+message StringResponse {
+
+	string responseText = 1;
+
+}
+
+message ChunkRequest{
+
+  bytes content = 2;
+
+}
+
+message ChunkResponse{
+
+  string response = 1;
+
+}
